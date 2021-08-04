@@ -4,8 +4,9 @@ const { User, Post, Comment } = require('../models');
 // get all posts 
 router.get('/', (req, res) => {
     Post.findAll({
-        include: [User, Post]
-    }).then((data) => res.json(data)).catch(err => res.status(500).json(err));
+        include: [User]
+    }).then((data) => {console.log('This is the Data',data);
+        res.json(data)}).catch(err => res.status(500).json(err));
 });
 
 //get a single post
