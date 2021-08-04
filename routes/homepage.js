@@ -6,7 +6,12 @@ router.get('/', (req, res) => {
     Post.findAll({
         include: [User]
     }).then((data) => {console.log('This is the Data',data);
-        res.render('homepage', {layout:'main'})
+    var cleanData = [];
+    cleanData = data.map(x =>
+        x.dataValues
+    );
+    console.log(cleanData)
+        res.render('homepage', {layout:'main', post:cleanData})
     }).catch(err => res.status(500).json(err));
 });
 
