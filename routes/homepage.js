@@ -5,25 +5,46 @@ const { User, Post, Comment } = require('../models');
 router.get('/', (req, res) => {
     Post.findAll({
         include: [User]
-    }).then((data) => {console.log('This is the Data',data);
-    var cleanData = [];
-    cleanData = data.map(x =>
-        x.dataValues
+    }).then((data) => {
+        
+    const cleanData = data.map(x =>
+       x.get({plain:true})
     );
-    console.log(cleanData)
-        res.render('homepage', {layout:'main', post:cleanData})
+   
+        res.render('all-post', cleanData)
     }).catch(err => res.status(500).json(err));
 });
 
 //get a single post
 router.get('/:id', (req,res) => {
-    Post.findOne({
-        where:{
-            id: req.params.id
-        },
-        include: [Post,User,Comment]
-    }).then((data) => res.json(data))
-    .catch(err => res.status(500).json(err));
+    Post.findByPk(req.params.id, {
+        include: [
+            User,
+            {
+                model: Comment,
+                include: [User]
+            }
+        ]
+    }).then((postData)=>{
+        const post = postData.get({plain:true})
+        res.render("singlePost", {post})
+}).catch(err => res.status(500).json(err))
 });
+
+router.get("/login", (req, res)=>{
+    if (req.session.loggedIn){
+        res.redirect("/")
+        return
+    }
+    res.render("login")
+})
+
+router.get("/signup", (req, res)=>{
+    if (req.session.loggedIn){
+        res.redirect("/")
+        return
+    }
+    res.render("signup")
+})
 
 module.exports = router;
