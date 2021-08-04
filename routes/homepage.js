@@ -6,7 +6,8 @@ router.get('/', (req, res) => {
     Post.findAll({
         include: [User]
     }).then((data) => {console.log('This is the Data',data);
-        res.json(data)}).catch(err => res.status(500).json(err));
+        res.render('homepage', {layout:'main'})
+    }).catch(err => res.status(500).json(err));
 });
 
 //get a single post

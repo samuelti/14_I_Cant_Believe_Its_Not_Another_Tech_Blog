@@ -1,10 +1,16 @@
-const { Model, DataTypes, STRING, Sequelize } = require('sequelize');
-const sequelize = require('../config/index');
+const { Model, DataTypes} = require('sequelize');
+const sequelize = require('../config/connection');
 
 class Post extends Model{}
 
 Post.init(
     {
+        id:{
+            type:DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey:true,
+            autoIncrement:true
+        },
         title: DataTypes.STRING,
         body: DataTypes.STRING
         // date: {
@@ -13,7 +19,11 @@ Post.init(
         // }
     }, 
     {
-        sequelize
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'post'
     }
 
 )
