@@ -4,19 +4,14 @@ const { User, Post, Comment } = require('../models');
 // get all posts 
 router.get('/', (req, res) => {
     Post.findAll({
-        include: [User]
+        include: [User, Post]
     }).then((data) => {
-        
-    const cleanData = data.map(x =>
-       x.get({plain:true})
-    );
-   
-        res.render('all-post', cleanData)
+        res.json(data)
     }).catch(err => res.status(500).json(err));
 });
 
 //get a single post
-router.get('/:id', (req,res) => {
+router.get('/post/:id', (req,res) => {
     Post.findByPk(req.params.id, {
         include: [
             User,
