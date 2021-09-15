@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Comment } = require('../models');
+const { User, Post, Comment } = require('../models/');
 
 // get all posts 
 router.get('/', (req, res) => {
@@ -7,7 +7,10 @@ router.get('/', (req, res) => {
         include: [User, Post]
     }).then((data) => {
         res.json(data)
-    }).catch(err => res.status(500).json(err));
+    }).catch((err) => {
+        console.log(err)
+        res.status(500).json(err)
+    });
 });
 
 //get a single post
