@@ -11,11 +11,11 @@
             <td>Title</td>
             <td>Author</td>
         </tr>
-{{#if haveData}}
+{{#if postsData}}
     {{#each postsData}}
         <tr>
             <td><a href="/Post/{{this.id}}">{{this.title}}</a></td>
-            <td>{{this.blogger_name}}</td>
+            <td>{{this.User.username}}</td>
         </tr>
     {{/each}}
 {{/if}}

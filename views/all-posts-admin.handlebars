@@ -1,21 +1,20 @@
-<h1>Home Page</h1>
+<h1>Dashboard</h1>
 
 <table border="1">
     <thead>
         <tr>
-            <th colspan="2">Current Posts</th>
+            <th colspan="2">Your Posts</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>Title</td>
-            <td>Author</td>
         </tr>
-{{#if haveData}}
+{{#if postsData}}
     {{#each postsData}}
         <tr>
             <td><a href="/Post/{{this.id}}">{{this.title}}</a></td>
-            <td>{{this.blogger_name}}</td>
+            <td>{{this.User.username}}</td>
         </tr>
     {{/each}}
 {{/if}}

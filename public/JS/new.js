@@ -1,18 +1,20 @@
-const newPost = async function (event){
-    event.preventDefault();
+const newPost = async function (event) {
+  event.preventDefault();
 
-    const titleValue = document.querySelector('input[name="post-title"]').value;
-    const bodyValue = document.querySelector('input[name="post-body"]').value;
+  const titleValue = document.querySelector("#post-title").value;
+  const bodyValue = document.querySelector("#post-body").value;
 
+  const fetchResponce = await fetch("/api/post", {
+    method: "POST",
+    body: JSON.stringify({
+      title: titleValue,
+      body: bodyValue,
+    }),
+    headers: { "Content-Type": "application/json" },
+  });
+  if (fetchResponce.status == 200) {
+    window.location.replace("/dashboard");
+  }
+};
 
-    await fetch('/api/post', {
-        method: 'POST',
-        body: JSON.stringify({
-            titleValue,
-            bodyValue
-        }),
-        headers: { "Content-Type": "application/json"}
-    });
-}
-
-document.querySelector('#newPost').addEventListener('submit', newPost);
+document.querySelector("#newPost").addEventListener("submit", newPost);
