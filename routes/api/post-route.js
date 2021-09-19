@@ -1,5 +1,5 @@
 const router =  require('express').Router();
-const { INITIALLY_DEFERRED } = require('sequelize/types/lib/deferrable');
+//const { INITIALLY_DEFERRED } = require('sequelize/types/lib/deferrable');
 const {Post} = require('../../models/');
 const withAuth = require('../../utils/auth');
 

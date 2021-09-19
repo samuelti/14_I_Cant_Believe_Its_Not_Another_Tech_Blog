@@ -1,86 +1,24 @@
 <h1>Home Page</h1>
 
 <table border="1">
-
     <thead>
-
         <tr>
-
-            <th colspan='1'>Navigation</th>
-
-        </tr>
-
-        <tr>
-
-            <td><a href="/">Home Page</a></td>
-
-        </tr>
-
-        <tr>
-
-            <td><a href="/Dashboard/">Dashboard</a></td>
-
-        </tr>
-
-        <tr>
-
-            <td><a href="/Login">Login</a></td>
-
-
-        </tr>
-        <tr>
-            <td><a href="/Signup">Sign Up</a></td>
-        </tr>
-
-    </thead>
-
-</table>
-
- 
-
- 
-
- 
-
-<table border="1">
-
-    <thead>
-
-        <tr>
-
             <th colspan="2">Current Posts</th>
-
         </tr>
-
     </thead>
-
     <tbody>
-
         <tr>
-
             <td>Title</td>
-
             <td>Author</td>
-
         </tr>
-
 {{#if haveData}}
-
     {{#each postsData}}
-
         <tr>
-
             <td><a href="/Post/{{this.id}}">{{this.title}}</a></td>
-
             <td>{{this.blogger_name}}</td>
-
         </tr>
-
     {{/each}}
-
 {{/if}}
-
     </tbody>
-
 </table>
  

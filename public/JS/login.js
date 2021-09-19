@@ -14,6 +14,8 @@ const login = async function(event){
     })
 //add conditional to check if response is ok and redirect user to the dashboard
 
+
+
 }
 
 document.querySelector('#loginForm').addEventListener('submit', login)

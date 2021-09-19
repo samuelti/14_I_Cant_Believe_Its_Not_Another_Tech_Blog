@@ -4,23 +4,22 @@ const withAuth = require('../utils/auth')
 
 // find all posts using the id of the user that is signed in
 router.get('/', withAuth, async (req, res)=>{
-    try{
- const data = await Post.findAll({
-     where:{
-         userId: req.session.userid
-     }
- })
+    try {
+      const data = await Post.findAll({
+        where: {
+          userId: req.session.userid,
+        },
+      });
 
- const posts = data.map((postData)=>postData.get({plain:true}));
+      const posts = data.map((postData) => postData.get({ plain: true }));
 
- res.render('all-post-admin', {
-     layout: 'dashboard',
-    posts
- })
-
-   }  catch(err){
-       res.redirect('login')
-   }
+      res.render("all-posts-admin", {
+        layout: "dashboard",
+        posts,
+      });
+    } catch (err) {
+      res.redirect("login");
+    }
 })
 
 router.get('/edit/:id', withAuth, async (req, res)=> {
