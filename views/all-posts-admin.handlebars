@@ -1,0 +1,25 @@
+<h1>Home Page</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th colspan="2">Current Posts</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Title</td>
+            <td>Author</td>
+        </tr>
+{{#if haveData}}
+    {{#each postsData}}
+        <tr>
+            <td><a href="/Post/{{this.id}}">{{this.title}}</a></td>
+            <td>{{this.blogger_name}}</td>
+        </tr>
+    {{/each}}
+{{/if}}
+    </tbody>
+</table>
+<a href="/dashboard/newPost"><h4>New Post</h4></a>
+{{!-- <script src="/js/dashboard.js"></script> --}}
