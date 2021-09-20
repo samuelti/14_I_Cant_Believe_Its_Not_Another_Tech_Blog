@@ -33,7 +33,11 @@ router.get("/post/:id", (req, res) => {
   })
     .then((postData) => {
       const post = postData.get({ plain: true });
-      res.render("single-post", { post });
+      res.render("single-post", {
+        layout: "main",
+        post: post,
+        Session:req.session
+      });
     })
     .catch((err) => res.status(500).json(err));
 });

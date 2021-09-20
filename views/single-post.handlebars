@@ -14,10 +14,10 @@
         </div>
 
         <div class="card-body">
-    {{#each }}
+    {{#each post.Comments}}
     <div>
-        <p>{{body}}</p>
-        <p>{{User.username}},{{format_date post.createdAt}} </p>
+        <p>{{this.body}}</p>
+        <p>{{this.User.username}},{{format_date this.createdAt}} </p>
     </div>
 
     {{/each}}
@@ -27,6 +27,7 @@
 
     {{/if}}
 
+    {{#if Session.loggedIn}}
     <form id="new-comment" class="card">
         <div class="card-header">
             <h3>add new comment</h3>
@@ -35,9 +36,11 @@
         <div class="card-body">
             <input type="hidden" id="post-id" value='{{post.id}}' />
             <label for="comment-body" class="form-label">Comment</label>
-            <button class="btn" type="button">Submit</button>
+            <input type="text" id="commentBody" class="form-input"/>
+            <button id="newComment" class="btn" type="submit">Submit</button>
         </div>
     </form>
+    {{/if}}
 </div>
 
-<script src=""></script>
+<script src="/JS/comment.js"></script>
