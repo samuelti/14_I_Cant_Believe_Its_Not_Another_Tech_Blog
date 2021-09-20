@@ -32,7 +32,7 @@ router.get('/edit/:id', withAuth, async (req, res)=> {
             const post = data.get({plain:true});
             res.render('edit-post', {
                 layout:'dashboard',
-                postsData: post
+                post: post
             })
         }else{
             res.status(404).end
