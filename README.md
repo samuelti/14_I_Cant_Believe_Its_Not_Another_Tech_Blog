@@ -1,3 +1,5 @@
 # 14 Model-View-Controller (MVC): Tech Blog
 
-This aplication is (should be) a tech blog website. Unfortunately, it isn't in it's current state, but certain part have been implemeted to make the jump possible. The website has password salting to protect user privacy. A system relating Users, Posts and comments together works on the backend. The website homepage can display a bunch of pre seeded posts using the hadlebars render engine.
+This application is a blog site. It uses an SQL database to store blog posts, comments and users. It uses password hashing to protect passwords. The website has a number features, you can view all posts, or only your own. You can comment on other people's posts and see the date of different posts. You can sign in, or log in, log out and edit your posts too.
+
+deployed link: https://fierce-hamlet-96304.herokuapp.com/
