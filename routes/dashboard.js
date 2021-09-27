@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Session } = require('express-session');
 const { User, Post, Comment } = require('../models/');
 const withAuth = require('../utils/auth')
 
@@ -17,6 +18,7 @@ router.get('/', withAuth, async (req, res)=>{
       res.render("all-posts-admin", {
         layout: "dashboard",
         postsData: posts,
+        Session: req.session
       });
     } catch (err) {
       console.log(err);
@@ -32,7 +34,8 @@ router.get('/edit/:id', withAuth, async (req, res)=> {
             const post = data.get({plain:true});
             res.render('edit-post', {
                 layout:'dashboard',
-                post: post
+                post: post,
+                Session: req.session
             })
         }else{
             res.status(404).end
@@ -47,6 +50,7 @@ router.get('/newPost', withAuth, async (req, res) => {
   
   res.render('new-post', {
     layout:'dashboard',
+    Session: req.session
   });
   
 });

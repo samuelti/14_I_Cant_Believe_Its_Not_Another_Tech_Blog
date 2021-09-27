@@ -13,6 +13,7 @@ router.get("/", async (req, res) => {
     res.render("all-posts", {
       layout: "main",
       postsData: posts,
+      Session:req.session
     });
   } catch (err) {
     console.log(err);
@@ -47,7 +48,10 @@ router.get("/login", (req, res) => {
     res.redirect("/");
     return;
   }
-  res.render("login");
+  res.render("login",{
+    Session:req.session,
+    layout: "main"
+  });
 });
 
 router.get("/signup", (req, res) => {
@@ -55,7 +59,10 @@ router.get("/signup", (req, res) => {
     res.redirect("/");
     return;
   }
-  res.render("signup");
+  res.render("signup",{
+    Session:req.session,
+    layout: "main"
+  });
 });
 
 router.get("/logout", (req,res) => {
