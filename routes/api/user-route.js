@@ -54,7 +54,7 @@ router.post("/login", (req, res)=>{
 router.post('/logout', (req, res)=>{
     if(req.session.loggedIn){
         req.session.destroy(()=>{
-            res.status(204).json({message:"you are lgogged out"}).end();
+            res.status(204).json({message:"you are logged out"}).end();
         })
     }else{
         res.status(400).end()
