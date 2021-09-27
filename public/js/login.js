@@ -19,6 +19,9 @@ const login = async function (event) {
   if(fetchResponce.status == 200){
     window.location.replace('/dashboard');
   }
+  else {
+    alert(`Error\n${body.message}`)
+  };
 };
 
 document.querySelector("#loginForm").addEventListener("submit", login);

@@ -14,9 +14,14 @@ const signup = async function (event) {
   });
 
   console.log(fetchResponce);
-  if(fetchResponce.status == 200){
+  const fetchResponceBody = await fetchResponce.json();
+  console.log(fetchResponceBody);
+  if (fetchResponce.status == 200){
     window.location.replace('/dashboard/');
   }
+  else {
+    alert(`Error\n${fetchResponceBody.errors[0].message}`)
+  };
 };
 
 document.querySelector("#signupForm").addEventListener("submit", signup);
